@@ -92,4 +92,12 @@ public class ProdutoService {
         produto.setOfertaAtiva(false);
         return produtoRepository.save(produto);
     }
+
+    // Reativar um Produto
+    @Transactional
+    public Produto reativar(Integer id) {
+        Produto produto = buscarPorId(id);
+        produto.setOfertaAtiva(true);
+        return produtoRepository.save(produto);
+    }
 }

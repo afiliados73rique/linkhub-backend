@@ -62,4 +62,10 @@ public class ProdutoController {
     public ResponseEntity<Produto> inativar(@PathVariable Integer id) {
         return ResponseEntity.ok(produtoService.inativar(id));
     }
+
+    // ProdutoController
+    @PatchMapping("/{id}/reativar")
+    public ResponseEntity<Produto> reativar(@PathVariable Integer id) {
+        return ResponseEntity.ok(produtoService.reativar(id));
+    }
 }
