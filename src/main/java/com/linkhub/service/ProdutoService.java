@@ -1,6 +1,7 @@
 package com.linkhub.service;
 
 import com.linkhub.dto.ProdutoRequest;
+import com.linkhub.dto.ProdutoResponse;
 import com.linkhub.model.Produto;
 import com.linkhub.repository.ProdutoRepository;
 import lombok.RequiredArgsConstructor;
@@ -68,5 +69,19 @@ public class ProdutoService {
         produto.setImagem(request.getImagem());
         produto.setLinkAfiliado(request.getLinkAfiliado());
         produto.setOfertaAtiva(request.getOfertaAtiva());
+    }
+
+    //Método devolve o ProdutoResponse invés de Poduto direto
+    private ProdutoResponse paraResponse(Produto produto) {
+        return new ProdutoResponse(
+                produto.getId(),
+                produto.getNome(),
+                produto.getDescricao(),
+                produto.getPreco(),
+                produto.getImagem(),
+                produto.getLinkAfiliado(),
+                produto.getOfertaAtiva(),
+                produto.getDataCadastro()
+        );
     }
 }
