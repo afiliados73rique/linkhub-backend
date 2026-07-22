@@ -84,4 +84,12 @@ public class ProdutoService {
                 produto.getDataCadastro()
         );
     }
+
+    // Inativa um produto (não deleta, só marca ofertaAtiva como false)
+    @Transactional
+    public Produto inativar(Integer id) {
+        Produto produto = buscarPorId(id); // reaproveita a busca que já lança 404 se não existir
+        produto.setOfertaAtiva(false);
+        return produtoRepository.save(produto);
+    }
 }
