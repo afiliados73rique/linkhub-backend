@@ -19,6 +19,9 @@ target/
 *.iml
 *.ipr
 
+.env
+application-local.properties
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
@@ -31,3 +34,20 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+### Variáveis de ambiente ###
+.env
+.env.*
+
+### Arquivos locais ###
+application-local.properties
+application-local.yml
+
+### Logs ###
+logs/
+*.log
+
+### Sistema Operacional ###
+.DS_Store
+Thumbs.db
