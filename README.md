@@ -56,29 +56,6 @@ src/
 
 ---
 
-## ⚙️ Instalação
-
-Clone o repositório:
-
-```bash
-git clone https://github.com/seu-usuario/linkhub-frontend.git
-```
-
-Entre na pasta:
-
-```bash
-cd linkhub-frontend
-```
-
-Instale as dependências:
-
-```bash
-npm install
-```
-
----
-
-
 
 
 
@@ -121,7 +98,7 @@ Projeto desenvolvido por:
 
 ## 📄 Licença
 
-
+todos os direitos estão reservados 
 
 ```
 
