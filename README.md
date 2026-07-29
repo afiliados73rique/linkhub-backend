@@ -178,17 +178,6 @@ Link
 
 ---
 
-### Usuários
-
-| Método | Endpoint | Descrição |
-|---------|----------|-----------|
-| GET | `/users` | Lista usuários |
-| GET | `/users/{id}` | Busca usuário |
-| PUT | `/users/{id}` | Atualiza usuário |
-| DELETE | `/users/{id}` | Remove usuário |
-
----
-
 ### Links
 
 | Método | Endpoint | Descrição |
