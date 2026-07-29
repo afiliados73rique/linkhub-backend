@@ -1,104 +1,268 @@
-# 🚀 LinkHub - Frontend
+# LinkHub API
 
-O **LinkHub** é uma plataforma desenvolvida para facilitar o gerenciamento e compartilhamento de links personalizados, permitindo que usuários organizem seus conteúdos em uma única página, semelhante ao Linktree, porém com recursos próprios e uma interface moderna.
+API REST responsável pelo gerenciamento de usuários, autenticação e links da plataforma **LinkHub**.
 
-Este repositório contém o **frontend** da aplicação, desenvolvido com **React**, responsável pela interface do usuário e comunicação com a API.
-
----
-
-## 📸 Demonstração
-
-<img width="1902" height="930" alt="image" src="https://github.com/user-attachments/assets/b4683e42-6472-4184-9270-2e372c7c64a4" />
+Desenvolvida com **Java** e **Spring Boot**, a aplicação oferece uma arquitetura organizada, escalável e preparada para ambientes de produção.
 
 ---
 
-## ✨ Funcionalidades
+## Tecnologias
 
-- 🔐 Autenticação de usuários
-- 👤 Cadastro e login
-- 📋 Dashboard de gerenciamento
-- ➕ Cadastro de links
-- ✏️ Edição de links
-- 🗑️ Exclusão de links
-- 📱 Interface responsiva
-- 🎨 Layout moderno
-- 🔗 Integração com a API do LinkHub
-
----
-
-## 🛠️ Tecnologias Utilizadas
-
-- React
-- React Router DOM
-- Axios
-- Vite
-- CSS3
-- JavaScript (ES6+)
+- Java 21
+- Spring Boot
+- Spring Web
+- Spring Data JPA
+- PostgreSQL
+- Neon Database
+- Maven
+- Railway
 
 ---
 
-## 📂 Estrutura do Projeto
+## Funcionalidades
+
+- CRUD completo de links
+- Associação de links ao usuário
+- Persistência em PostgreSQL
+- API REST
+- Tratamento de exceções
+- Validação de dados
+
+---
+
+## Arquitetura
+
+A API segue uma arquitetura em camadas.
 
 ```
-src/
+Cliente
+
+    │
+
+    ▼
+
+Controller
+
+    │
+
+    ▼
+
+Service
+
+    │
+
+    ▼
+
+Repository
+
+    │
+
+    ▼
+
+PostgreSQL (Neon)
+```
+
+---
+
+## Estrutura do Projeto
+
+```
+src
+└── main
+    ├── java
+    │
+    ├── config
+    ├── controller
+    ├── dto
+    ├── exception
+    ├── model
+    ├── repository
+    ├── service
+    └── LinkHubApplication.java
+    │
+    └── resources
+        ├── application.properties
+        └── application-prod.properties
+```
+
+---
+
+## Instalação
+
+Clone o repositório
+
+```bash
+git clone https://github.com/seu-usuario/linkhub-api.git
+```
+
+Entre na pasta
+
+```bash
+cd linkhub-api
+```
+
+Instale as dependências
+
+```bash
+mvn clean install
+```
+
+---
+
+## Executando localmente
+
+```bash
+mvn spring-boot:run
+```
+
+A API estará disponível em
+
+```
+http://localhost:8080
+```
+
+---
+
+## Variáveis de Ambiente
+
+Configure as seguintes variáveis:
+
+```properties
+SPRING_DATASOURCE_URL=
+
+SPRING_DATASOURCE_USERNAME=
+
+SPRING_DATASOURCE_PASSWORD=
+
+SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+SERVER_PORT=8080
+```
+
+---
+
+## Banco de Dados
+
+A aplicação utiliza **PostgreSQL**, hospedado no **Neon Database**, garantindo alta disponibilidade, escalabilidade e compatibilidade com o ecossistema Spring.
+
+Modelo simplificado:
+
+```
+User
 │
-├── assets/
-├── components/
-├── pages/
-├── services/
-├── hooks/
-├── context/
-├── routes/
-├── styles/
-├── App.jsx
-└── main.jsx
+├── id
+├── name
+├── email
+├── password
+└── links
+        │
+        ▼
+Link
+├── id
+├── title
+├── url
+├── icon
+└── order
 ```
 
 ---
 
+## Endpoints
 
+### Autenticação
 
+| Método | Endpoint | Descrição |
+|---------|----------|-----------|
+| POST | `/auth/register` | Cadastro de usuário |
+| POST | `/auth/login` | Login |
 
-## 🚀 Deploy
+---
 
-O frontend está hospedado na **Vercel**.
+### Usuários
 
-Produção:
+| Método | Endpoint | Descrição |
+|---------|----------|-----------|
+| GET | `/users` | Lista usuários |
+| GET | `/users/{id}` | Busca usuário |
+| PUT | `/users/{id}` | Atualiza usuário |
+| DELETE | `/users/{id}` | Remove usuário |
 
+---
+
+### Links
+
+| Método | Endpoint | Descrição |
+|---------|----------|-----------|
+| GET | `/links` | Lista links |
+| GET | `/links/{id}` | Busca link |
+| POST | `/links` | Cria link |
+| PUT | `/links/{id}` | Atualiza link |
+| DELETE | `/links/{id}` | Remove link |
+
+---
+
+## Exemplo de Resposta
+
+### Sucesso
+
+```json
+{
+  "success": true,
+  "message": "Operação realizada com sucesso.",
+  "data": {}
+}
 ```
-https://linkhub-afiliado.com.br
+
+### Erro
+
+```json
+{
+  "timestamp": "2026-07-29T15:30:00",
+  "status": 404,
+  "error": "Not Found",
+  "message": "Recurso não encontrado."
+}
 ```
 
 ---
 
-## 📱 Responsividade
+## Deploy
 
-A aplicação foi desenvolvida para funcionar em:
-
-- Desktop
-- Tablets
-- Smartphones
-
----
-
-## 📌 Objetivo
-
-O LinkHub foi desenvolvido com o objetivo de oferecer uma solução simples, rápida e intuitiva para centralização de links pessoais, profissionais ou comerciais em uma única página personalizada.
+| Serviço | Plataforma |
+|----------|------------|
+| API | Railway |
+| Banco de Dados | Neon PostgreSQL |
 
 ---
 
-## 👨‍💻 Equipe
+## Qualidade do Projeto
 
-Projeto desenvolvido por:
-
-- Nicolly Meireles
-- Millena Meireles
+- Arquitetura em camadas
+- Código orientado a objetos
+- API REST
+- Spring Data JPA
+- Separação de responsabilidades
+- Tratamento global de exceções
+- Validação de dados
+- Configuração por ambiente
+- Estrutura preparada para evolução do projeto
 
 ---
 
-## 📄 Licença
+## Desenvolvedores
 
-todos os direitos estão reservados 
+**Nicolly Meireles**
 
-```
+Desenvolvimento Backend, Banco de Dados, Deploy e Documentação.
 
+**Millena Meireles**
+
+Desenvolvimento Backend, Banco de Dados e Testes.
+
+---
+
+## Licença
+
+Este projeto é proprietário e destinado ao uso da equipe LinkHub.
+
+© 2026 LinkHub. Todos os direitos reservados.
